@@ -1,0 +1,131 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"name": {
+			"description": "Name of the workflow",
+			"type": "string"
+		},
+		"aliases": { "$ref": "#/$defs/aliases" },
+		"IO_Graph": {
+			"description": "Representation of data dependencies between applications and streaming semantics",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": { "$ref": "#/$defs/application_name" },
+					"input_stream": { "description": "Files read by the application", "$ref": "#/$defs/list_of_files" },
+                    "output_stream": { "description": "Files produced by the application", "$ref": "#/$defs/list_of_files" },
+    				"streaming": { "description": "Streaming semantics of files produced by the application", "$ref": "#/$defs/streaming" }
+				},
+				"required": ["name"],
+				"dependentRequired": {
+					"streaming": ["output_stream"]
+  				}
+			}
+		},
+		"permanent": { "description": "Files that will be stored in the filesystem at the end of the workflow execution", "$ref": "#/$defs/list_of_files" },
+		"exclude": {
+			"description": "Files that will not be handled by CAPIO even if they are in the CAPIODIR",
+			"$ref": "#/$defs/list_of_files"		
+		},
+		"home_node_policy": { "$ref": "#/$defs/home_node_policy" }
+	},
+	"required": ["name", "IO_Graph"],
+
+	"$defs": {
+
+		"aliases": {
+			"description": "Defines aliases for groups of files",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"group_name": { "type": "string" },
+					"files": { "$ref": "#/$defs/list_of_files"	}
+				}
+			}
+		},
+
+		"application_name": {
+			"description": "Name of the application",
+			"type": "string"
+		},
+
+		"list_of_files": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"minItems": 1
+		},
+
+		"streaming": {
+			"description": "Streaming semantics of files produced by the application",
+			"type" : "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": { "$ref": "#/$defs/list_of_files" },
+					"committed" : {
+						"description": "Commit rule",
+						"type" : "string",
+						"pattern": "^(on_termination)$|^(on_close(:([1-9]+))?)$|on_file"
+					},
+					"mode" : {
+						"description": "Firing rule",
+						"enum": ["update", "no_update"]
+					},
+					"n_files": {
+						"description": "Number of files in the directory",
+						"type": "integer",
+						"minimum": 0
+					}
+				},
+				"required": ["name", "committed"],
+				"if": {
+					"type": "object",
+					"properties": {
+						"committed": { "const": "on_file" }
+					}
+				},
+				"then": {
+					"properties": {
+						"files_deps": {
+							"$ref": "#/$defs/list_of_files"
+						}
+					}
+				},
+				"unevaluatedProperties": false
+			},
+			"minItems": 1
+		},
+		"home_node_policy": {
+			"description": "In which nodes the files are stored during the workflow execution",
+			"type": "object",
+			"properties": {
+				"manual": {
+					"description": "Name of the policy",
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": { "$ref": "#/$defs/list_of_files"	},
+							"app_node" : {
+								"description": "Appname:LogicID",
+								"type": "string",
+								"pattern": "^([a-z]+(:([0-9]+))?)$"
+							}
+						},
+						"required": ["name", "app_node"]
+					},
+					"minItems": 1
+				},
+				"hashing" : { "$ref": "#/$defs/list_of_files" },
+				"create" : { "$ref": "#/$defs/list_of_files" }
+			},
+			"additionalProperties": false
+		}
+	},
+	"additionalProperties": false
+}
