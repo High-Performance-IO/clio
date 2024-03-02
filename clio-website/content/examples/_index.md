@@ -26,23 +26,24 @@ With the CoT-FoC semantics, there is no ongoing streaming communication. However
 ```json
 {
    "name":"my_workflow",
-   "IO_Graph":[
-      {
-         "name":"writer",
-         "output_stream":["file1.dat", "file2.dat" ],
-         "streaming":[
-            {
-               "name": [ "file1.dat", "file2.dat" ],
-               "committed":"on_termination",
-               "mode":"update"
+   "alias":{
+      "files":["file1.dat", "file2.dat"],
+   },
+   "IO_Graph" : {
+      "writer":{
+         "output":{
+            "files":{
+               "committed": "on_termination",
+               "mode": "update"
             }
-         ]
+         }
       },
-      {
-         "name":"reader",
-         "input_stream":["file1.dat","file2.dat"]
+      "reader":{
+         "input":{
+            "files":{}
+         }
       }
-   ]
+   }
 }
 ```
 
@@ -64,22 +65,27 @@ When these two conditions are met, the CAPIO middleware will return the EOS sign
 ```json
 {
    "name":"my_workflow",
-   "IO_Graph":[
-      {
-         "name":"writer",
-         "output_stream":["file1.dat", "file2.dat"],
-         "streaming":[
-            {
-               "name": [ "file1.dat", "file2.dat" ],
-               "committed":"on_termination",
-               "mode":"no_update"
+   "alias":{
+      "files":["file1.dat", "file2.dat"],
+   },
+   "IO_Graph" : {
+      "writer":{
+         "output":{
+            "file1.dat":{
+               "committed": "on_termination",
+               "mode": "no_update"
             },
-         ]
+            "file2.dat":{
+               "committed": "on_termination",
+               "mode": "no_update"
+            }
+         }
       },
-      {
-         "name":"reader",
-         "input_stream":["file1.dat","file2.dat"]
+      "reader":{
+         "input":{
+            "files":{}
+         }
       }
-   ]
+   }
 }
 ```

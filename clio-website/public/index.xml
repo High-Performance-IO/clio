@@ -16,12 +16,12 @@
 Determining when there are no further updates to the file, referred to as the commit rule Identifying when a consumer can safely start reading a portion of data written in the file, known as the firing rule In the following, we describe the semantics of the commit rule and then the semantics of the firing rule</description>
     </item>
     <item>
-      <title>V1 configuration file</title>
+      <title>V1.1 configuration file</title>
       <link>http://localhost:1313/configuration_file/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/configuration_file/index.html</guid>
-      <description>A valid CLIO V1 configuration file is comprised of five different sections:
-Workflow name: identifies the application workflow composed by multiple application modules. IO_Graph: describes file data dependencies among application modules. Alias: groups under a convenient name a set of files or directories. Permanent: defines which files must be kept on the permanent storage at the end of the workflow execution. Exclude: identifies the files and directories not handled by CAPIO.</description>
+      <description>A valid CLIO V1.1 configuration file is comprised of five different sections:
+Workflow name: identifies the application workflow composed by multiple application modules. Alias: groups under a convenient name a set of files or directories. IO_Graph: describes file data dependencies among application modules. From V1, CLIO V1.1 is less verbose and is less prone to user error. This is because now it is not possible to define multiple streaming rules for the same file.</description>
     </item>
     <item>
       <title>Examples</title>
