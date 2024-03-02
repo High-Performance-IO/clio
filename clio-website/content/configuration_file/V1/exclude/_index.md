@@ -1,7 +1,7 @@
 +++
-archetype = "chapter"
+archetype = "section"
 title = "Exclude"
-weight = 7
+weight = 4
 +++
 
 This section, identified by the keyword `exclude`, is used to specify those files that will not be handled by CLIO even if they will be created inside the CLIO_DIR directory. Its value is an array of file names (whose values can also be aliases).  

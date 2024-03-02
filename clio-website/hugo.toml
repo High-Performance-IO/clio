@@ -5,7 +5,13 @@ theme='relearn'
 
 
 [[menu.shortcuts]]
-name = "<i class='fab fa-fw fa-github'></i> GitHub repo"
-identifier = "ds"
+name = "<i class='fab fa-fw fa-github'></i> CLIO on github"
+identifier = "clio"
 url = "https://github.com/High-Performance-IO/clio"
 weight = 10
+
+[[menu.shortcuts]]
+name = "<i class='fab fa-fw fa-github'></i> CAPIO"
+identifier = "capio"
+url = "https://github.com/High-Performance-IO/capio"
+weight = 11

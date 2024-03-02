@@ -4,7 +4,7 @@ title = "Semantics"
 weight = 1
 +++
 
-In this section, we introduce the streaming semantics that allow CAPIO to transform a batch, file-based workflow into an in-situ workflow (i.e., a workflow where all steps are executed concurrently). To establish the file synchronization semantics between consecutive workflow steps, two temporal aspects should be considered:
+In this section, we introduce the streaming semantics that allow a CLIO implementation to transform a batch, file-based workflow into an in-situ workflow (i.e., a workflow where all steps are executed concurrently). To establish the file synchronization semantics between consecutive workflow steps, two temporal aspects should be considered:
 
 - Determining when there are no further updates to the file, referred to as the `commit rule`
 - Identifying when a consumer can safely start reading a portion of data written in the file, known as the `firing rule`

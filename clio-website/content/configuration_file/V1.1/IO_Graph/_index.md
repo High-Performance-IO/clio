@@ -1,7 +1,7 @@
 +++
-archetype = "chapter"
+archetype = "section"
 title = "I/O Graph"
-weight = 5
+weight = 2
 +++
 
 
@@ -18,6 +18,10 @@ Each object inside the streaming section may define the following attributes:
 - `dirname`: The directory names to which the rule applies. The value of this keyword is an array of directory names.
 - `committed`: This keyword defines the “commit rule” associated with the files or directories identified with the keywords name and dirname, respectively. Its value can be either `on_close:N` (where N is an integer ≥ 1), `on_termination`, or `on_file` if the “commit rule” applies to filenames (i.e., if the name keyword is name). Instead, if the “commit rule” applies to directory names its value can be either `on_termination`, `on_file`, or `n_files:N` (where N is an integer ≥ 1). If the committed keyword is not specified, the default “commit rule” is `on_termination`. If the commit rule semantics is `on_file`, then the keyword `files_deps`, whose value is an array of filenames or directory names, defines the set of dependencies.
 - `mode`: his keyword defines the “firing rule” associated with the files and directories identified with the keys name and dirname, respectively. Its value can be either `update` or `no_update`. If the mode keyword is not specified, the default “firing rule” is `update`.
+- `permanent`. This is a boolean flagh thaht can either be true or false (default = false). If set to true, then the file will be stored on the filesystem at the end of the workflow execution.
+- `exclude`: This is a boolean flag thath can either be true or false (Default = false). This flag is used to specify those files that will not be handled by CLIO even if they will be created inside the CLIO_DIR directory. If this flag is set to true, then all the other flags, specified for the file name (or alias), are ignored.
+
+
 
 ## Example
 
@@ -34,22 +38,30 @@ The following snippet is a valid example of the `IO_Graph` section:
             {
                 "name": [ "file0.dat" ],
                 "committed": "on_termination",
-                "mode": "update"
+                "mode": "update",
+                "permanent": false,
+                "exclude": false,
+                "policy": "create",
             },
             {
                 "name": [ "file1.dat" ],
                 "committed": "on_close",
-                "mode": "update"
+                "mode": "update",
+                "permanent": true,
+                "exclude": false,
+                "policy": "hashing",
             },
             {
                 "name": [ "file2.dat" ],
                 "committed": "on_close:10",
-                "mode": "no_update"
+                "mode": "no_update",
+                "permanent": false,
+                "exclude": true,
             },
             {
                 "dirname": [ "dir" ],
                 "committed": "n_files:1000",
-                "mode": "no_update"
+                "mode": "no_update",
             }
         ]
       },

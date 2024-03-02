@@ -1,10 +1,8 @@
 +++
-archetype = "chapter"
+archetype = "section"
 title = "Alias"
-weight = 4
+weight = 0
 +++
-
-# Alias section
 
 The aliases section, identified by the keyword aliases is useful to reduce the verbosity of the enumeration of files an application can consume or produce. It is a vector of objects composed of the following items:
 

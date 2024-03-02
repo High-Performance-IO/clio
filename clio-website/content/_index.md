@@ -15,16 +15,11 @@ Although it is not the most commonly adopted language in the context of high-lev
 
 The semantics for CLIO is described in [Semantics](semantics/index.md). Please read this section as it is the heart of the whole language.
 
-## CLIO configuration file  
+## CLIO configuration file specifications
 
-A valid CLIO configuration file is comprised of five different sections:
+The specification of the CLIO configuration file can be found at [Configuration file](configuration_file/_index.md). JSON schemas are also available.
 
-- [Workflow name](configuration_file/workflow_name/_index.md): identifies the application workflow composed by multiple application modules.
-- [IO_Graph](configuration_file/IO_Graph/_index.md): describes file data dependencies among application modules.
-- [Alias](configuration_file/alias/_index.md): groups under a convenient name a set of files or directories.
-- [Permanent](configuration_file/permanent/_index.md): defines which files must be kept on the permanent storage at the end of the workflow execution.
-- [Exclude](configuration_file/exclude/_index.md): identifies the files and directories not handled by CAPIO.
-- [Home Node Policy](configuration_file/home_node_policy/_index.md): defines different file mapping policies to establish which CAPIO servers store which files
+
 
 ## Examples
 

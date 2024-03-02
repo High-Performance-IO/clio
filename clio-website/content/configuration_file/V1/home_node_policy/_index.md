@@ -1,7 +1,7 @@
 +++
-archetype = "chapter"
+archetype = "section"
 title = "Home node policy"
-weight = 8
+weight = 5
 +++
 
 

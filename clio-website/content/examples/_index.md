@@ -1,7 +1,7 @@
 +++
 archetype = "chapter"
 title = "Examples"
-weight = 9
+weight = 3
 +++
 
 In this section, we introduce how to express the commit and firing semantics using the CLIO coordination language, providing simple examples.

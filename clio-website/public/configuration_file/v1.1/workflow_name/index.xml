@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Workflow name on CLIO</title>
+    <link>http://localhost:1313/configuration_file/v1.1/workflow_name/index.html</link>
+    <description>Recent content in Workflow name on CLIO</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/configuration_file/v1.1/workflow_name/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

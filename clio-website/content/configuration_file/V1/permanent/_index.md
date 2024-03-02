@@ -1,7 +1,7 @@
 +++
-archetype = "chapter"
+archetype = "section"
 title = "Permanent"
-weight = 6
+weight = 3
 +++
 
 This language section, identified by the keyword `permanent`, is used to specify those files that will be stored on the filesystem at the end of the workflow execution. Its value is an array of file names (whose values can be also aliases).  
