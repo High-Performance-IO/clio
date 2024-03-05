@@ -34,19 +34,30 @@ The definition of thoose sections are the same, we shall describe here the gener
     }
   }
 }
-
 ```
 
 ## File object
 
 For each file, the following fields can be specified:
+- `kind` This keyword is used to describe wheter the object is a directory or a file. It can have as a value either `file` (default if not explicitly changed) or `directory`
 
-- `committed`: This keyword defines the “commit rule” associated with the files or directories identified with the keywords name and dirname, respectively. Its value can be either `on_close:N` (where N is an integer ≥ 1), `on_termination`, or `on_file` if the “commit rule” applies to filenames (i.e., if the name keyword is name). Instead, if the “commit rule” applies to directory names its value can be either `on_termination`, `on_file`, or `n_files:N` (where N is an integer ≥ 1). If the committed keyword is not specified, the default “commit rule” is `on_termination`. If the commit rule semantics is `on_file`, then the keyword `files_deps`, whose value is an array of filenames or directory names, defines the set of dependencies.
-- `mode`: t his keyword defines the “firing rule” associated with the files and directories identified with the keys name and dirname, respectively. Its value can be either `update` or `no_update`. If the mode keyword is not specified, the default “firing rule” is `update`.
+- `committed`: This keyword defines the “commit rule” associated with the files or directory that is being defined in the current scope.
+  If the “commit rule” applies to filenames (i.e., if the name keyword is name) Its value can be:
+  - `on_termination` (default): the file is considered to be committed the the producer terminates
+  - `on_close:N` (where N is an integer ≥ 1. If N is not specified, it is intended to be 1). In this case, the file is considered committed as soon as it has been closed N times.
+  - `on_file`: in this case the file is considered committed when the file specified is committed. If this is the commit_rule, then the keyword `file_deps`, which is an array of files, is required to express dependencies.
+
+- `mode`: this keyword defines the “firing rule” associated with the files and directories thath is being descrived in the current scope. Its value can be either
+  - `update` (default option)
+  - `no_update`
+
 - `permanent`: this is a boolean flag, used to specify those files that will be stored on the filesystem at the end of the workflow execution
+
 - `exclude`: this is a boolean flag, used to specify those files that will not be handled by CLIO even if they will be created inside the CLIO_DIR directory.
+
 - `policy`: this is an object that defines the home node policy of the file. See below for more informations.
 
+For more information about committed and mode section, please refer to [semantics](../../semantics/_index.md) section.
 ## Home Node Policy
 
 This object defines the Home Node Policy for the file. There are three different policies in capio.
