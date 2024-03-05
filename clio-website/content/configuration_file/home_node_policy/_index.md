@@ -13,8 +13,11 @@ This section allows the CLIO user to selectively choose the CLIO server node whe
 
 These three keywords are optional, i.e., the user can avoid setting them explicitly in the CLIO configuration file. In this latter case, the default policy adopted by the CLIO middleware for the file-to-node mapping is `create`.
 
-> [!WARNING]
-> There cannot be filename overlap among the policies specified (i.e., the intersection of the set defined by the different home-node policies must be empty).
+
+{{% notice style="warning" title="Warning"  %}}
+There cannot be filename overlap among the policies specified (i.e., the intersection of the set defined by the different home-node policies must be empty).
+{{% /notice %}}
+
 
 For the `hashing` and the `create` policies, the value is an array of files.
 
@@ -52,8 +55,10 @@ In the example, there is an overlapping match for the files `file1.dat` and `fil
 
 Even if, in most cases, the ambiguity can be eliminated considering the most specific match for the rules that must be used (for example, `*.dat` is more specific than `file*` if we consider the context, i.e., `output_stream` list of files specified by the user), in the current version of CLIO, all ambiguities are not solved, and an undefined behavior exception is raised by the CLIO implementation.
 
-> [!NOTE]
-> In future releases, we will increase flexibility by relaxing such constraints and automatically disambiguating the syntax expression when possible.
+{{% notice style="info" title="Notice"  %}}
+In future releases, we will increase flexibility by relaxing such constraints and automatically disambiguating the syntax expression when possible.
+{{% /notice %}}
+
 
 It is worth mentioning that, other than carefully using wildcards, proper use of the `aliases` section can help the user write a non-ambiguous and clean configuration file. An example is shown below:
 

@@ -4,37 +4,28 @@
     <loc>http://localhost:1313/semantics/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/configuration_file/v1.1/workflow_name/index.html</loc>
+    <loc>http://localhost:1313/configuration_file/workflow_name/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/configuration_file/v1/workflow_name/index.html</loc>
+    <loc>http://localhost:1313/configuration_file/io_graph/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/configuration_file/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/configuration_file/v1.1/io_graph/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/configuration_file/v1/io_graph/index.html</loc>
-  </url>
-  <url>
     <loc>http://localhost:1313/examples/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/configuration_file/v1/permanent/index.html</loc>
+    <loc>http://localhost:1313/configuration_file/permanent/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/configuration_file/v1/exclude/index.html</loc>
+    <loc>http://localhost:1313/configuration_file/exclude/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/configuration_file/v1/home_node_policy/index.html</loc>
+    <loc>http://localhost:1313/configuration_file/home_node_policy/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/configuration_file/v1.1/alias/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/configuration_file/v1/alias/index.html</loc>
+    <loc>http://localhost:1313/configuration_file/alias/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/categories/index.html</loc>
@@ -44,8 +35,5 @@
   </url>
   <url>
     <loc>http://localhost:1313/tags/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/configuration_file/v1/index.html</loc>
   </url>
 </urlset>

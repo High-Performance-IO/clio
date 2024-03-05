@@ -18,19 +18,19 @@
     <title>Permanent :: CLIO</title>
     <link href="/configuration_file/permanent/index.xml" rel="alternate" type="application/rss+xml" title="Permanent :: CLIO">
     <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
-    <link href="/css/fontawesome-all.min.css?1709382937" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/fontawesome-all.min.css?1709382937" rel="stylesheet"></noscript>
-    <link href="/css/nucleus.css?1709382937" rel="stylesheet">
-    <link href="/css/auto-complete.css?1709382937" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/auto-complete.css?1709382937" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar.min.css?1709382937" rel="stylesheet">
-    <link href="/css/fonts.css?1709382937" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/fonts.css?1709382937" rel="stylesheet"></noscript>
-    <link href="/css/theme.css?1709382937" rel="stylesheet">
-    <link href="/css/theme-auto.css?1709382937" rel="stylesheet" id="R-variant-style">
-    <link href="/css/chroma-auto.css?1709382937" rel="stylesheet" id="R-variant-chroma-style">
-    <link href="/css/variant.css?1709382937" rel="stylesheet">
-    <link href="/css/print.css?1709382937" rel="stylesheet" media="print">
-    <link href="/css/ie.css?1709382937" rel="stylesheet">
-    <script src="/js/url.js?1709382937"></script>
-    <script src="/js/variant.js?1709382937"></script>
+    <link href="/css/fontawesome-all.min.css?1709637135" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/fontawesome-all.min.css?1709637135" rel="stylesheet"></noscript>
+    <link href="/css/nucleus.css?1709637135" rel="stylesheet">
+    <link href="/css/auto-complete.css?1709637135" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/auto-complete.css?1709637135" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar.min.css?1709637135" rel="stylesheet">
+    <link href="/css/fonts.css?1709637135" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/fonts.css?1709637135" rel="stylesheet"></noscript>
+    <link href="/css/theme.css?1709637135" rel="stylesheet">
+    <link href="/css/theme-neon.css?1709637135" rel="stylesheet" id="R-variant-style">
+    <link href="/css/chroma-neon.css?1709637135" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/css/variant.css?1709637135" rel="stylesheet">
+    <link href="/css/print.css?1709637135" rel="stylesheet" media="print">
+    <link href="/css/ie.css?1709637135" rel="stylesheet">
+    <script src="/js/url.js?1709637135"></script>
+    <script src="/js/variant.js?1709637135"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
       // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
@@ -40,7 +40,7 @@
       window.relearn.baseUriFull='http:\/\/localhost:1313/';
       // variant stuff
       window.relearn.themeVariantModifier='';
-      window.variants && variants.init( [ 'auto' ] );
+      window.variants && variants.init( [ 'neon' ] );
       // translations
       window.T_Copy_to_clipboard = `Copy to clipboard`;
       window.T_Copied_to_clipboard = `Copied to clipboard!`;
@@ -74,7 +74,7 @@
           </div>
           <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
             itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/index.html"><span itemprop="name">CLIO: Coordination Language for IO</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/configuration_file/index.html"><span itemprop="name">Configuration file</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/configuration_file/index.html"><span itemprop="name">V1 configuration file</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
             itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Permanent</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
@@ -94,12 +94,11 @@
         </div>
       </nav>
       <div id="R-main-overlay"></div>
-      <main id="R-body-inner" class="highlightable chapter narrow" tabindex="-1">
+      <main id="R-body-inner" class="highlightable default" tabindex="-1">
         <div class="flex-block-wrapper">
-          <article class="chapter">
+          <article class="default">
             <header class="headline">
             </header>
-<div class="article-subheading">Chapter 6</div>
 <h1 id="permanent">Permanent</h1>
 
 <p>This language section, identified by the keyword <code>permanent</code>, is used to specify those files that will be stored on the filesystem at the end of the workflow execution. Its value is an array of file names (whose values can be also aliases).</p>
@@ -133,12 +132,12 @@ Coordination Language for IO
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="/js/auto-complete.js?1709382937" defer></script>
-        <script src="/js/lunr/lunr.min.js?1709382937" defer></script>
-        <script src="/js/lunr/lunr.stemmer.support.min.js?1709382937" defer></script>
-        <script src="/js/lunr/lunr.multi.min.js?1709382937" defer></script>
-        <script src="/js/lunr/lunr.en.min.js?1709382937" defer></script>
-        <script src="/js/search.js?1709382937" defer></script>
+        <script src="/js/auto-complete.js?1709637148" defer></script>
+        <script src="/js/lunr/lunr.min.js?1709637148" defer></script>
+        <script src="/js/lunr/lunr.stemmer.support.min.js?1709637148" defer></script>
+        <script src="/js/lunr/lunr.multi.min.js?1709637148" defer></script>
+        <script src="/js/lunr/lunr.en.min.js?1709637148" defer></script>
+        <script src="/js/search.js?1709637148" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -150,20 +149,21 @@ Coordination Language for IO
         <div id="R-topics">
           <ul class="enlarge morespace collapsible-menu">
           <li data-nav-id="/semantics/index.html" class=""><a class="padding" href="/semantics/index.html">Semantics</a></li>
-          <li data-nav-id="/configuration_file/index.html" class="parent "><a class="padding" href="/configuration_file/index.html">Configuration file</a><ul id="R-subsections-2df642e3f9303e80580fa02bd5e2a52e" class="morespace collapsible-menu">
+          <li data-nav-id="/configuration_file/index.html" class="parent "><a class="padding" href="/configuration_file/index.html">V1 configuration file</a><ul id="R-subsections-2df642e3f9303e80580fa02bd5e2a52e" class="morespace collapsible-menu">
           <li data-nav-id="/configuration_file/workflow_name/index.html" class=""><a class="padding" href="/configuration_file/workflow_name/index.html">Workflow name</a></li>
-          <li data-nav-id="/configuration_file/alias/index.html" class=""><a class="padding" href="/configuration_file/alias/index.html">Alias</a></li>
           <li data-nav-id="/configuration_file/io_graph/index.html" class=""><a class="padding" href="/configuration_file/io_graph/index.html">I/O Graph</a></li>
           <li data-nav-id="/configuration_file/permanent/index.html" class="active"><a class="padding" href="/configuration_file/permanent/index.html">Permanent</a></li>
           <li data-nav-id="/configuration_file/exclude/index.html" class=""><a class="padding" href="/configuration_file/exclude/index.html">Exclude</a></li>
-          <li data-nav-id="/configuration_file/home_node_policy/index.html" class=""><a class="padding" href="/configuration_file/home_node_policy/index.html">Home node policy</a></li></ul></li>
+          <li data-nav-id="/configuration_file/home_node_policy/index.html" class=""><a class="padding" href="/configuration_file/home_node_policy/index.html">Home node policy</a></li>
+          <li data-nav-id="/configuration_file/alias/index.html" class=""><a class="padding" href="/configuration_file/alias/index.html">Alias</a></li></ul></li>
           <li data-nav-id="/examples/index.html" class=""><a class="padding" href="/examples/index.html">Examples</a></li>
           </ul>
         </div>
         <div id="R-shortcuts">
           <div class="nav-title padding">More</div>
           <ul class="space">
-            <li><a class="padding" href="https://github.com/High-Performance-IO/clio"><i class='fab fa-fw fa-github'></i> GitHub repo</a></li>
+            <li><a class="padding" href="https://github.com/High-Performance-IO/clio"><i class='fab fa-fw fa-github'></i> CLIO on github</a></li>
+            <li><a class="padding" href="https://github.com/High-Performance-IO/capio"><i class='fab fa-fw fa-github'></i> CAPIO</a></li>
           </ul>
         </div>
         <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
@@ -191,7 +191,7 @@ Coordination Language for IO
                   <div class="control-style">
                     <label class="a11y-only" for="R-select-variant">Theme</label>
                     <select id="R-select-variant" onchange="window.variants && variants.changeVariant( this.value );">
-                      <option id="R-auto" value="auto" selected>Auto</option>
+                      <option id="R-neon" value="neon" selected>Neon</option>
                     </select>
                   </div>
                   <div class="clear"></div>
@@ -216,8 +216,8 @@ Coordination Language for IO
         </div>
       </div>
     </aside>
-    <script src="/js/clipboard.min.js?1709382937" defer></script>
-    <script src="/js/perfect-scrollbar.min.js?1709382937" defer></script>
-    <script src="/js/theme.js?1709382937" defer></script>
+    <script src="/js/clipboard.min.js?1709637148" defer></script>
+    <script src="/js/perfect-scrollbar.min.js?1709637148" defer></script>
+    <script src="/js/theme.js?1709637148" defer></script>
   </body>
 </html>
