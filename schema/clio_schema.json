@@ -1,194 +1,80 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CLIO Lang V1.1",
+  "description": "Coordination Language for I schema V1.1",
   "type": "object",
   "properties": {
     "name": {
-      "description": "Name of the workflow",
+      "description": "The unique name of the workflow",
       "type": "string"
     },
-    "aliases": {
-      "$ref": "#/$defs/aliases"
-    },
-    "IO_Graph": {
-      "description": "Representation of data dependencies between applications and streaming semantics",
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "$ref": "#/$defs/application_name"
-          },
-          "input_stream": {
-            "description": "Files read by the application",
-            "$ref": "#/$defs/list_of_files"
-          },
-          "output_stream": {
-            "description": "Files produced by the application",
-            "$ref": "#/$defs/list_of_files"
-          },
-          "streaming": {
-            "description": "Streaming semantics of files produced by the application",
-            "$ref": "#/$defs/streaming"
-          }
-        },
-        "required": [
-          "name"
-        ],
-        "dependentRequired": {
-          "streaming": [
-            "output_stream"
-          ]
+    "alias": {
+      "description": "Aliases defined to group different files",
+      "type": "object",
+      "patternProperties": {
+        "^(/[^/]+)+$": {
+          "type": "array",
+          "items": { "type": "string" }
         }
       }
     },
-    "permanent": {
-      "description": "Files that will be stored in the filesystem at the end of the workflow execution",
-      "$ref": "#/$defs/list_of_files"
-    },
-    "exclude": {
-      "description": "Files that will not be handled by CLIO even if they are in the CLIO implemented middleware directory",
-      "$ref": "#/$defs/list_of_files"
-    },
-    "home_node_policy": {
-      "$ref": "#/$defs/home_node_policy"
-    }
-  },
-  "required": [
-    "name",
-    "IO_Graph"
-  ],
-  "$defs": {
-    "aliases": {
-      "description": "Defines aliases for groups of files",
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "group_name": {
-            "type": "string"
-          },
-          "files": {
-            "$ref": "#/$defs/list_of_files"
-          }
-        }
-      }
-    },
-    "application_name": {
-      "description": "Name of the application",
-      "type": "string"
-    },
-    "list_of_files": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "minItems": 1
-    },
-    "streaming": {
-      "description": "Streaming semantics of files produced by the application",
-      "type": "array",
-      "items": {
-        "type": "object",
-        "oneOf": [
-          {
-            "properties": {
-              "name": {
-                "$ref": "#/$defs/list_of_files"
-              },
-              "committed": {
-                "description": "Commit rule",
-                "type": "string",
-                "pattern": "^(on_termination)$|^(on_close(:([1-9]+))?)$|on_file"
-              }
-            },
-            "required": [
-              "name",
-              "committed"
-            ]
-          },
-          {
-            "properties": {
-              "dirname": {
-                "$ref": "#/$defs/list_of_files"
-              },
-              "committed": {
-                "description": "Commit rule",
-                "type": "string",
-                "pattern": "^(on_termination)$|^(n_files(:([1-9]+)([0-9]*))?)$|on_file"
-              }
-            },
-            "required": [
-              "dirname",
-              "committed"
-            ]
-          }
-        ],
-        "properties": {
-          "mode": {
-            "description": "Firing rule",
-            "enum": [
-              "update",
-              "no_update"
-            ]
-          }
-        },
-        "if": {
+    "io_graph": {
+      "description": "IO graph to express data dependencies and streaming semantics",
+      "type": "object",
+      "patternProperties": {
+        "^(/[^/]+)+$": {
           "type": "object",
           "properties": {
-            "committed": {
-              "const": "on_file"
-            }
+            "input": { "$ref": "#/$defs/stream_element" },
+            "output": { "$ref": "#/$defs/stream_element" }
           }
-        },
-        "then": {
-          "properties": {
-            "files_deps": {
-              "$ref": "#/$defs/list_of_files"
-            }
-          },
-          "required": [
-            "files_deps"
-          ]
-        },
-        "unevaluatedProperties": false
-      },
-      "minItems": 1
-    },
-    "home_node_policy": {
-      "description": "In which nodes the files are stored during the workflow execution",
-      "type": "object",
-      "properties": {
-        "manual": {
-          "description": "Name of the policy",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "$ref": "#/$defs/list_of_files"
-              },
-              "app_node": {
-                "description": "Appname:LogicID",
-                "type": "string",
-                "pattern": "^([a-z]+(:([0-9]+))?)$"
-              }
-            },
-            "required": [
-              "name",
-              "app_node"
-            ]
-          },
-          "minItems": 1
-        },
-        "hashing": {
-          "$ref": "#/$defs/list_of_files"
-        },
-        "create": {
-          "$ref": "#/$defs/list_of_files"
         }
-      },
-      "additionalProperties": false
+      }
     }
   },
-  "additionalProperties": false
+  "required": ["name", "io_graph"],
+  "$defs": {
+    "stream_element": {
+      "type": "object",
+      "patternProperties": {
+        "^(/[^/]+)+$": {
+          "description": "File or glob to which the following rule will apply",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": ["file", "directory"]
+            },
+            "committed": {
+              "type": "string",
+              "enum": ["on_close", "on_termination"]
+            },
+            "mode": {
+              "type": "string",
+              "enum": ["update", "no_update"]
+            },
+            "policy": { "$ref": "#/$defs/policy" },
+            "permanent": { "type": "boolean" },
+            "exclude": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": ["create", "manual", "hashing"]
+        },
+        "source": { "type": "string" }
+      },
+      "if": {
+        "properties": {
+          "name": { "const": "manual" }
+        },
+        "required": ["source"]
+      }
+    }
+  }
 }
