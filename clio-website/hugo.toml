@@ -3,6 +3,8 @@ languageCode = 'en-us'
 title = 'CLIO'
 theme='relearn'
 
+[params]
+  themeVariant = 'neon'
 
 [[menu.shortcuts]]
 name = "<i class='fab fa-fw fa-github'></i> CLIO on github"

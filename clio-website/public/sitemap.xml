@@ -10,6 +10,9 @@
     <loc>http://localhost:1313/configuration_file/io_graph/index.html</loc>
   </url>
   <url>
+    <loc>http://localhost:1313/configuration_file/index.html</loc>
+  </url>
+  <url>
     <loc>http://localhost:1313/examples/index.html</loc>
   </url>
   <url>
@@ -32,8 +35,5 @@
   </url>
   <url>
     <loc>http://localhost:1313/tags/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/configuration_file/index.html</loc>
   </url>
 </urlset>
