@@ -4,7 +4,7 @@ This repository describes CLIO: a Coordination Language for I/O, of which [CAPIO
 
 ## Documentation
 
-The official documentation can be found [here](docs/index.md)
+The official documentation can be found [here](https://clio.hpc4ai.unito.it/)
 
 ## Schema
 
