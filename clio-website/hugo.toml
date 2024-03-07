@@ -1,10 +1,11 @@
 baseURL = 'https://clio.hpc4ai.it/'
 languageCode = 'en-us'
 title = 'CLIO'
-theme='relearn'
+theme = ['github.com/bep/docuapi/v2', 'github.com/martignoni/hugo-notice', 'github.com/McShelby/hugo-theme-relearn']
 
 [params]
   themeVariant = 'neon'
+  themeVariantModifier = '.css'
 
 [[menu.shortcuts]]
 name = "<i class='fab fa-fw fa-github'></i> CLIO on github"
