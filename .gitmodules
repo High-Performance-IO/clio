@@ -1,6 +1,0 @@
-[submodule "clio-website/themes/docuapi"]
-	path = clio-website/themes/docuapi
-	url = git@github.com:bep/docuapi.git
-[submodule "clio-website/themes/relearn"]
-	path = clio-website/themes/relearn
-	url = git@github.com:McShelby/hugo-theme-relearn.git
