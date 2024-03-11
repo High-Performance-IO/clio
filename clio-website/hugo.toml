@@ -1,7 +1,12 @@
 baseURL = 'https://clio.hpc4ai.it/'
 languageCode = 'en-us'
 title = 'CLIO'
-theme = ['github.com/bep/docuapi/v2', 'github.com/martignoni/hugo-notice', 'github.com/McShelby/hugo-theme-relearn']
+
+[module]
+[[module.imports]]
+    path = "github.com/martignoni/hugo-notice"
+[[module.imports]]
+    path = 'github.com/McShelby/hugo-theme-relearn'
 
 [params]
   themeVariant = 'neon'
