@@ -10,7 +10,7 @@ enableRobotsTXT = true
     path = 'github.com/McShelby/hugo-theme-relearn'
 
 [params]
-  themeVariant = 'neon'
+  themeVariant = 'relearn-dark'
   themeVariantModifier = '.css'
 
 [[menu.shortcuts]]
