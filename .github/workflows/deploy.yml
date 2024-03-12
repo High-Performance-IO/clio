@@ -1,0 +1,39 @@
+name: "Deploy"
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    name: "Deploy a new version of the CLIO website"
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Setup Hugo"
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.120.4'
+          extended: true
+      - name: "Build"
+        env:
+          HUGO_ENV: production
+        run: | 
+          cd clio-website
+          hugo --minify
+      - name: "Deploy"
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: clio.hpc4ai.it
+          key: ${{ secrets.SSH_DEPLOY_KEY }}
+          rm: true
+          source: "clio-website/public/*"
+          strip_components: 2
+          target: /mnt/services/clio/html
+          username: clio-user
+      - name: "Reload Nginx"
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: clio.hpc4ai.it
+          key: ${{ secrets.SSH_DEPLOY_KEY }}
+          script: /mnt/services/clio/bin/reload.sh
+          username: clio-user
