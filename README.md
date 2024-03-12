@@ -8,4 +8,4 @@ The official documentation can be found [here](https://clio.hpc4ai.unito.it/)
 
 ## Schema
 
-The json schema that defines the language can be found under [schema](schema/clio_schema.json)
+The json schema that defines the language can be found under [schema](schema/clio.json)

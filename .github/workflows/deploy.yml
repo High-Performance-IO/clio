@@ -17,17 +17,15 @@ jobs:
       - name: "Build"
         env:
           HUGO_ENV: production
-        run: | 
-          cd clio-website
-          hugo --minify
+        run: hugo --minify
       - name: "Deploy"
         uses: appleboy/scp-action@v0.1.4
         with:
           host: clio.hpc4ai.it
           key: ${{ secrets.SSH_DEPLOY_KEY }}
           rm: true
-          source: "clio-website/public/*"
-          strip_components: 2
+          source: "public/*"
+          strip_components: 1
           target: /mnt/services/clio/html
           username: clio-user
       - name: "Reload Nginx"

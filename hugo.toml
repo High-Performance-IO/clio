@@ -1,6 +1,7 @@
 baseURL = 'https://clio.hpc4ai.it/'
 languageCode = 'en-us'
 title = 'CLIO'
+enableRobotsTXT = true
 
 [module]
 [[module.imports]]
