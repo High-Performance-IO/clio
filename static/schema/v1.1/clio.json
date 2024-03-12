@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CLIO Lang V1.1",
+  "description": "Coordination Language for I schema V1.1",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "The unique name of the workflow",
+      "type": "string"
+    },
+    "alias": {
+      "description": "Aliases defined to group different files",
+      "type": "object",
+      "patternProperties": {
+        "^(/[^/]+)+$": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "io_graph": {
+      "description": "IO graph to express data dependencies and streaming semantics",
+      "type": "object",
+      "patternProperties": {
+        "^(/[^/]+)+$": {
+          "type": "object",
+          "properties": {
+            "input": { "$ref": "#/$defs/stream_element" },
+            "output": { "$ref": "#/$defs/stream_element" }
+          }
+        }
+      }
+    }
+  },
+  "required": ["name", "io_graph"],
+  "$defs": {
+    "stream_element": {
+      "type": "object",
+      "patternProperties": {
+        "^(/[^/]+)+$": {
+          "description": "File or glob to which the following rule will apply",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": ["file", "directory"]
+            },
+            "committed": {
+              "type": "string",
+              "enum": ["on_close", "on_termination"]
+            },
+            "mode": {
+              "type": "string",
+              "enum": ["update", "no_update"]
+            },
+            "policy": { "$ref": "#/$defs/policy" },
+            "permanent": { "type": "boolean" },
+            "exclude": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": ["create", "manual", "hashing"]
+        },
+        "source": { "type": "string" }
+      },
+      "if": {
+        "properties": {
+          "name": { "const": "manual" }
+        },
+        "required": ["source"]
+      }
+    }
+  }
+}
