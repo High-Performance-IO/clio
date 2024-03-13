@@ -4,8 +4,8 @@ This repository describes CLIO: a Coordination Language for I/O, of which [CAPIO
 
 ## Documentation
 
-The official documentation can be found [here](https://clio.hpc4ai.unito.it/)
+The official documentation can be found [here](https://clio.hpc4ai.it/)
 
 ## Schema
 
-The json schema that defines the language can be found under [schema](schema/clio.json)
+The json schema that defines the language can be found under [schema](schema/)

@@ -6,8 +6,7 @@ weight = 3
 
 In this section, we introduce how to express the commit and firing semantics using the CLIO coordination language, providing simple examples.
 
-> [!NOTE]
-> For the following instances, we consider a workflow comprising two applications: an application called `writer` that produces two files and an application called `reader`, that reads these two files.
+> **For the following instances, we consider a workflow comprising two applications: an application called `writer` that produces two files and an application called `reader`, that reads these two files.**
 
 Typically, this straightforward workflow is executed in a classic batch execution. First, the `writer` application is launched to produce the input files for the `reader` application. Then, the `reader` application can start and consume the files, reading them from the filesystem.
 
