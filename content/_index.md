@@ -13,18 +13,18 @@ Although it is not the most commonly adopted language in the context of high-lev
 
 ## Semantics of CLIO  
 
-The semantics for CLIO is described in [Semantics](semantics/index.md). Please read this section as it is the heart of the whole language.
+The semantics for CLIO is described in [Semantics](semantics/). Please read this section as it is the heart of the whole language.
 
 ## CLIO configuration file specifications
 
-The specification of the CLIO configuration file can be found at [Configuration file](configuration_file/_index.md). JSON schemas are also available.
+The specification of the CLIO configuration file can be found at [Configuration file](configuration_file/). JSON schemas are also available.
 
 ## Examples
 
-To further illustrate how to write a capio configuration file, we have include several complete examples in the [example](examples.md) page.
+To further illustrate how to write a capio configuration file, we have include several complete examples in the [example](examples/) page.
 
 ## Json schema
-The json schema for CLIO can be found at [schema/](schema/clio.json), and can be used to help write configurations files.
+The json schema for CLIO can be found at [schema](schema/clio.json), and can be used to help write configurations files.
 
 ## Team
 
