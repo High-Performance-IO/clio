@@ -10,7 +10,7 @@ In this section, we introduce how to express the commit and firing semantics usi
 
 Typically, this straightforward workflow is executed in a classic batch execution. First, the `writer` application is launched to produce the input files for the `reader` application. Then, the `reader` application can start and consume the files, reading them from the filesystem.
 
-CLIO, allows a CLIO middleware implementation  to run both applications concurrently without modifying the code of the two modules. To achieve this effectively, CLIO requires the declaration of the data streaming semantics (as described in [Semantics section](semantics.md)) it should enforce on the produced and consumed files to guarantee the correct execution.
+CLIO, allows a CLIO middleware implementation  to run both applications concurrently without modifying the code of the two modules. To achieve this effectively, CLIO requires the declaration of the data streaming semantics (as described in [Semantics section](/semantics)) it should enforce on the produced and consumed files to guarantee the correct execution.
 
 ## Commit on Termination, Fire on Commit (CoT-FoC)
 
